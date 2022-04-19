@@ -12,15 +12,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject winCanvas;
     [SerializeField] Text winnerNameText;
-
-
     [SerializeField] GameObject pauseCanvas;
-    bool isPaused = false;
 
+    bool isPaused = false;
     bool gameIsOver = false;
 
     void Start()
     {
+        StartGame();                      // Called to clear any variables(e.g. score and scoreText) and to unpause the game
         ball.OnHit += HitControl;
         ball.OnRightScore += RightScoreControl;
         ball.OnLeftScore += LeftScoreControl;
@@ -104,7 +103,7 @@ public class GameManager : MonoBehaviour
         winCanvas.SetActive(true);
     }
 
-    public void RestartGame()
+    public void StartGame()
     {
         Time.timeScale = 1;
         isPaused = false;
